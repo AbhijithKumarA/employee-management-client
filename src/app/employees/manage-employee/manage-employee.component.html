@@ -1,1 +1,86 @@
-<p>manage-employee works!</p>
+<form ngForm #f="ngForm" (submit)="onSubmit(f)">
+    <input type="hidden" name="employeeId" value="service.employeeFormData.employeeId" />
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input ngModel name="firstName" #firstName="ngModel" [(ngModel)]="service.employeeFormData.firstName"
+                 id="firstName" type="text" class="form-control" required />
+                <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name cannot be empty!</div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input ngModel name="lastName" #lastName="ngModel" [(ngModel)]="service.employeeFormData.lastName"
+                 id="lastName" type="text" class="form-control" />
+                <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">Last Name cannot be empty!</div>
+            </div>
+        </div>
+    </div> <br>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input ngModel name="dob" #dob="ngModel" [(ngModel)]="service.employeeFormData.dateOfBirth"
+                 id="dob" type="date" class="form-control" required />
+                <div class="alert alert-danger" *ngIf="dob.touched && !dob.valid">Date of Birth cannot be empty!</div>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select ngModel name="gender" #gender="ngModel" [(ngModel)]="service.employeeFormData.gender"
+                 id="gender" class="form-control" required>
+                    <option value="">--Select--</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="gender.touched && !gender.valid">Select a Gender!</div>
+            </div>
+        </div>
+    </div> <br>
+
+    <div class="form-group">
+        <label for="address">Address</label>
+        <textarea ngModel name="address" #address="ngModel" [(ngModel)]="service.employeeFormData.address"
+         id="address" type="textarea" class="form-control" rows="4" required ></textarea>
+        <div class="alert alert-danger" *ngIf="address.touched && !address.valid">Address cannot be empty!</div>
+    </div> <br>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select ngModel name="department" #department="ngModel" [(ngModel)]="service.employeeFormData.department"
+                 id="department" class="form-control" required>
+                    <option value="">--Select--</option>
+                    <!-- <option *ngFor="let dep of service.departmentList">{{ dep.departmentName }}</option> -->
+                </select>
+                <div class="alert alert-danger" *ngIf="department.touched && !department.valid">Select a Department!</div>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="form-group">
+                <label for="doj">Date of Joining</label>
+                <input ngModel name="doj" #doj="ngModel" [(ngModel)]="service.employeeFormData.dateOfJoining"
+                 id="doj" type="date" class="form-control" />
+                <div class="alert alert-danger" *ngIf="doj.touched && !doj.valid">Date of Joining cannot be empty!</div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="text-right">
+        <button class="btn btn-secondary mr-3" data-bs-dismiss="modal" (click)="resetForm(f)">Cancel</button> &nbsp;
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid"  *ngIf="service.employeeFormData.employeeId==0">Add</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" *ngIf="service.employeeFormData.employeeId!=0">Update</button>
+    </div>
+</form>

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,8 @@ import { AssetListComponent } from './asset-list/asset-list.component';
 import { ManageAssetComponent } from './asset-list/manage-asset/manage-asset.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/homepage', pathMatch: 'full' },
       { path: 'employees', component: EmployeesComponent },
@@ -38,6 +43,9 @@ import { ProfileComponent } from './profile/profile.component';
       { path: 'asset-requests', component: AssetRequestsComponent },
       { path: 'profile', component: ProfileComponent }
     ]),
+    BrowserAnimationsModule,
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
