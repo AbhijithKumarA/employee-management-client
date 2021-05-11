@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-assets',
-  templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.css']
+  selector: 'app-asset-requests',
+  templateUrl: './asset-requests.component.html',
+  styleUrls: ['./asset-requests.component.css']
 })
 export class AssetRequestsComponent implements OnInit {
 

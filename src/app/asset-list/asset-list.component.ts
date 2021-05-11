@@ -4,9 +4,9 @@ import { AssetManagementService } from '../shared/asset-management.service';
 import { Asset } from '../shared/shared.model';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.css']
+  selector: 'app-asset-list',
+  templateUrl: './asset-list.component.html',
+  styleUrls: ['./asset-list.component.css']
 })
 export class AssetListComponent implements OnInit {
 

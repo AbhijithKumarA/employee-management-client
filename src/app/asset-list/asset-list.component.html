@@ -15,8 +15,8 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="assetModalLabel" *ngIf="service.assetFormData.AssetRequestId==0">Add Asset</h4>
-              <h4 class="modal-title" id="assetModalLabel" *ngIf="service.assetFormData.AssetRequestId!=0">Edit Asset</h4>
+              <h4 class="modal-title" id="assetModalLabel" *ngIf="service.assetFormData.AssetId==0">Add Asset</h4>
+              <h4 class="modal-title" id="assetModalLabel" *ngIf="service.assetFormData.AssetId!=0">Edit Asset</h4>
               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
             </div>
             <div class="modal-body">
@@ -43,18 +43,20 @@
 </thead>
 <tbody>
   <tr *ngFor="let emp of service.assetList">
-        <td class="text-center">{{ asset.AssetId }}</td>
-        <td class="text-center">{{ asset.AssetName }}</td>
-        <td class="text-center">{{ asset.AllocatedTo }}</td>
-        <td class="text-center">{{ asset.AllocatedBy }}</td>
-        <td class="text-center">{{asset.Manufacturer}}</td>
-        <td>{{ <asset class="Model"></asset> }}</td>
-        <td>{{ <asset class="SerialNumber"></asset> }}</td>
-        <td class="text-center">{{ asset.DateOfExpiry | date:'dd-MM-YYYY' }}</td>
+        <td class="text-center"> asset.AssetId </td>
+        <td class="text-center"> asset.AssetName </td>
+        <td class="text-center"> asset.AllocatedTo </td>
+        <td class="text-center"> asset.AllocatedBy </td>
+        <td class="text-center">asset.Manufacturer</td>
+        <td class="text-center">asset.Model</td>
+        <td class="text-center">asset.SerialNumber</td>
+        <td class="text-center"> asset.DateOfExpiry | date:'dd-MM-YYYY' </td>
         <td>
-            <a class="btn edit" data-bs-toggle="modal" data-bs-target="#assetModal" (click)="populate(asset)">
+            <a class="btn edit" data-bs-toggle="modal" data-bs-target="#assetModal">
+            <!-- (click)="" -->
             <i class="bi bi-pencil-square" style="color: rgb(0, 183, 255);"></i>  Edit</a>
-            <a class="btn delete" (click)="onDelete(asset.AssetRequestId)">
+            <a class="btn delete" >
+              <!-- (click)="onDelete(asset.AssetRequestId)" -->
             <i class="bi bi-trash" style="color: red"></i>  Delete</a>
           </td>
         </tr>
