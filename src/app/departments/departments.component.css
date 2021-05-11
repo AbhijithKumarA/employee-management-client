@@ -1,0 +1,16 @@
+.container-fluid {
+    padding-top: 20px;
+  }
+  
+  table {
+    align-content: center;
+    column-width: auto;
+  }
+  
+  .non-click {
+    cursor: default;
+  }
+  
+  .tr {
+      text-align: left;
+  }

@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label for="dob">Date of Birth</label>
                 <input ngModel name="dob" #dob="ngModel" [(ngModel)]="service.employeeFormData.dateOfBirth"
-                 id="dob" type="date" class="form-control" required />
+                 id="dob" type="datetime" class="form-control" required />
                 <div class="alert alert-danger" *ngIf="dob.touched && !dob.valid">Date of Birth cannot be empty!</div>
             </div>
         </div>
@@ -56,13 +56,13 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="department">Department</label>
-                <select ngModel name="department" #department="ngModel" [(ngModel)]="service.employeeFormData.department"
-                 id="department" class="form-control" required>
+                <label for="departmentName">Department</label>
+                <select ngModel name="departmentName" #departmentName="ngModel" [(ngModel)]="service.employeeFormData.departmentName"
+                 id="departmentName" class="form-control" required>
                     <option value="">--Select--</option>
-                    <!-- <option *ngFor="let dep of service.departmentList">{{ dep.departmentName }}</option> -->
+                    <option *ngFor="let dep of service.departmentList">{{ dep.departmentName }}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf="department.touched && !department.valid">Select a Department!</div>
+                <div class="alert alert-danger" *ngIf="departmentName.touched && !departmentName.valid">Select a Department!</div>
             </div>
         </div>
     
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <label for="doj">Date of Joining</label>
                 <input ngModel name="doj" #doj="ngModel" [(ngModel)]="service.employeeFormData.dateOfJoining"
-                 id="doj" type="date" class="form-control" />
+                 id="doj" type="datetime" class="form-control" />
                 <div class="alert alert-danger" *ngIf="doj.touched && !doj.valid">Date of Joining cannot be empty!</div>
             </div>
         </div>

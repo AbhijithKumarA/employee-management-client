@@ -1,1 +1,32 @@
-<p>manage-department works!</p>
+<form ngForm #form="ngForm" (submit)=onSubmit(form) >
+    <input type="hidden" name="departmentId" value="service.departmentFormData.departmentId">
+
+    <div class="form-group">
+        <label for="departmentName">Department Name</label>
+        <input ngModel name="departmentName" #departmentName="ngModel" [(ngModel)]="service.departmentFormData.departmentName"
+         id="departmentName" type="text" class="form-control" required />
+        <div class="alert alert-danger" *ngIf="departmentName.touched && !departmentName.valid">Department Name cannot be empty!</div>
+    </div> <br>
+
+    <div class="form-group">
+        <label for="inCharge">In-charge</label>
+        <input ngModel name="inCharge" #inCharge="ngModel" [(ngModel)]="service.departmentFormData.deptInChargeName"
+         id="inCharge" type="text" class="form-control"/>
+        <!-- <div class="alert alert-danger" *ngIf="inCharge.touched && !inCharge.valid">In-charge cannot be empty!</div> -->
+    </div> <br>
+    
+    <div class="form-group">
+        <label for="inChargeEmployee">Employee Id</label>
+        <input ngModel name="inChargeEmployee" #inChargeEmployee="ngModel" [(ngModel)]="service.departmentFormData.employeeId"
+         id="inChargeEmployee" type="text" class="form-control"/>
+        <!-- <div class="alert alert-danger" *ngIf="inChargeEmployee.touched && !inChargeEmployee.valid">Please provide Employee Id of the In-charge!</div> -->
+    </div>
+
+    <hr>
+
+    <div class="text-right">
+        <button class="btn btn-secondary mr-3" data-bs-dismiss="modal" (click)="resetForm(form)">Cancel</button> &nbsp;
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" *ngIf="service.departmentFormData.departmentId==0">Add</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" *ngIf="service.departmentFormData.departmentId!=0">Update</button>
+    </div>
+</form>
