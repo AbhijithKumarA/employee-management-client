@@ -1,4 +1,6 @@
+import { UserService } from './../shared/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, CanActivate } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private service: UserService) { }
 
-  ngOnInit(): void {
+  userDetails : any;
+
+  ngOnInit(): void { 
+    this.service.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
   }
 
 }

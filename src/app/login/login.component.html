@@ -1,0 +1,48 @@
+<body class="text-center">
+
+    <h1 class="h3 mb-3 fw-normal"><b>Employee Management Portal</b></h1>
+    <main class="form-signin">
+
+      <form ngForm class="signin" #f="ngForm" (submit)=onSubmit(f)>
+        <h2 class="signin-heading h3 mb-3 fw-normal">User Login</h2>
+
+        <img class="mx-auto" src="/assets/User-Icon.png" alt="logo" width="120" height="120">
+
+        <div class="form-group">
+        <input
+          ngModel
+          name="Username"
+          #Username="ngModel"
+          type="username"
+          id="inputUsername"
+          class="form-control"
+          placeholder="Username"
+          [(ngModel)]="formModel.Username"
+          required
+        />        
+        </div>
+
+      <div class="form-group">  
+      <input
+          ngModel
+          name="password"
+          #password="ngModel"
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="formModel.Password"
+          required
+        />        
+      </div>
+      
+      <div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]=!f.valid>
+          Sign in
+        </button>
+     </div>
+     </form>
+     <br>
+
+    <h6>Don't have an account? <a routerLink="/register">Sign up</a></h6>
+</main></body>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Employee } from './shared.model';
+import { Employee, Department } from './shared.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,11 @@ export class EmployeeManagementService {
 
   employeeFormData : Employee = new Employee();
   employeeList : Employee[];
+
+  departmentFormData : Department = new Department();
+  departmentList : Department[];
+
+  //EMPLOYEE ACTIONS
 
   postEmployee() {
     return this.http.post(`${this.baseURL}/Emp`, this.employeeFormData);
@@ -30,5 +35,25 @@ export class EmployeeManagementService {
     this.http.get(`${this.baseURL}/Emp`)
     .toPromise()
     .then(res => this.employeeList = res as Employee[]);
+  }
+
+  //DEPARTMENT ACTIONS
+
+  postDepartment() {
+    return this.http.post(`${this.baseURL}/Dept`, this.departmentFormData);
+  }
+
+  putDepartment() {
+    return this.http.put(`${this.baseURL}/Dept/${this.departmentFormData.departmentId}`, this.departmentFormData);
+  }
+
+  deleteDepartment(id: number) {
+    return this.http.delete(`${this.baseURL}/Dept/${id}`);
+  }
+
+  refreshDepartmentList() {
+    this.http.get(`${this.baseURL}/Dept`)
+    .toPromise()
+    .then(res => this.departmentList = res as Department[]);
   }
 }
