@@ -6,6 +6,13 @@ import { Employee, Department } from './shared.model';
   providedIn: 'root'
 })
 export class EmployeeManagementService {
+  refreshAssetList() {
+    throw new Error('Method not implemented.');
+  }
+  deleteAsset(id: number) {
+    throw new Error('Method not implemented.');
+  }
+  assetFormData: import("d:/Project/employee-management-client/src/app/shared/shared.model").Asset;
 
   constructor(private http: HttpClient) { }
 

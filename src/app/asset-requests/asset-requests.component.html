@@ -2,3 +2,63 @@
 <br>
 
 <p>asset-requests works!</p>
+<div class="container-fluid">
+    <br>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#assetModal">
+          <i class="bi bi-plus" style="font-size: 20px;"></i> 
+          New Asset
+        </button>
+      </div>
+    
+      <div class="modal fade" id="assetModal" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="assetModalLabel" *ngIf="service.assetFormData.AssetRequestId==0">Add Asset</h4>
+              <h4 class="modal-title" id="assetModalLabel" *ngIf="service.assetFormData.AssetRequestId!=0">Edit Asset</h4>
+              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+            </div>
+            <div class="modal-body">
+              <app-manage-asset></app-manage-asset>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <br />
+<table class="table table-hover non-click">
+    <thead class="thead-light">
+      <tr class="text-center">
+        <th>AssetRequestId</th>
+        <th>EmployeeId</th>
+        <th>AssetId </th>
+        <th>Reason</th>
+        <th>RequestedOn</th>
+        <th>ApprovedOn</th>
+        <th>ApprovedBy</th>
+        <th>Duration</th>
+        <th>Status</th>>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of service.assetList">
+        <td class="text-center">{{ asset.AssetRequestId }}</td>
+        <td>{{ asset.EmployeeId }} {{ asset.AssetId  }}</td>
+        <td class="text-center">{{ asset.Reason }}</td>
+        <td class="text-center">{{ asset.RequestedOn | date:'dd-MM-YYYY' }}</td>
+        <td class="text-center">{{ asset.ApprovedOn | date:'dd-MM-YYYY' }}</td>
+        <td>{{ asset.Duration }}</td>
+        <td>{{ asset.Status }}</td>
+        <td>
+          <a class="btn edit" data-bs-toggle="modal" data-bs-target="#assetModal" (click)="populate(asset)">
+          <i class="bi bi-pencil-square" style="color: rgb(0, 183, 255);"></i>  Edit</a>
+          <a class="btn delete" (click)="onDelete(asset.AssetRequestId)">
+          <i class="bi bi-trash" style="color: red"></i>  Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center" *ngIf="!service.assetList?.length">No assets to show.</div>
+</div>
