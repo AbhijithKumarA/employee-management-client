@@ -35,7 +35,7 @@ export class EmployeeManagementService {
   }
 
   deleteEmployee(id: number) {
-    return this.http.delete(`${this.baseURL}/Emp/${this.employeeFormData.employeeId}`);
+    return this.http.delete(`${this.baseURL}/Emp/${id}`);
   }
 
   refreshEmployeeList() {

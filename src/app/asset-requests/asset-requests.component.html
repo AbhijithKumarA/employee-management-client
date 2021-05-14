@@ -1,7 +1,30 @@
 <app-homepage></app-homepage>
 <br>
-
 <p>asset-requests works!</p> 
+
+<h1>Select Asset type</h1>
+<form action="/action_page.php">
+  <label for="AssetType">Choose a Asset Type:</label>
+  <select name="AssetType" id="AssetTypeId">
+    <option value="Hardware">Hardware</option>
+    <option value="Software">Software</option>
+  </select>
+  <label for="Hardware">    Choose an Hardware :</label>
+  <select name="Hardware" id="1">
+    <option value="Desktop">Desktop</option>
+    <option value="Keyboard">Keyboard</option>
+    <option value="Laptop">Laptop</option>
+  </select>
+    <label for="Software">    Choose an Software:</label>
+  <select name="Software" id="2">
+    <option value="Software Licence">Software Licence</option>
+    <option value="Adobe Professional">Adobe Professional</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+<p>Confirm submitting request.</p>
+
 <!-- <div class="container-fluid">
     <br>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
