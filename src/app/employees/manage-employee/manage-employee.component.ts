@@ -14,6 +14,7 @@ export class ManageEmployeeComponent implements OnInit {
   constructor(public service: EmployeeManagementService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.service.refreshDepartmentList();
   }
 
   onSubmit(f: NgForm) {
@@ -31,7 +32,7 @@ export class ManageEmployeeComponent implements OnInit {
         this.service.refreshEmployeeList();
         this.toastr.success('Added successfully', 'New Employee')
       },
-      err => { console.log(err) }
+      err => { console.log(err), console.log(f) }
     );
   }
 

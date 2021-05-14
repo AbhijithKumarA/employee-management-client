@@ -11,6 +11,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(private router: Router, private service: UserService) { }
 
+  // loggedIn: boolean = (localStorage.getItem('token') != null)
+
   userDetails : any;
 
   ngOnInit(): void { 
