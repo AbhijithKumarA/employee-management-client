@@ -18,15 +18,17 @@ export class Department {
 
 export class Asset {
     
-    AssetId:number = 0;
-    AssetName: string = '';
-    AssetType : string = '';
-    AllocatedTo: string = '';
-    AllocatedBy: string = '';
-    SerialNumber:number = 0;
-    Manufacturer: string = '';
-    Model: string = '';
-    LicenceNumber:number = 0;
-    DateOfExpiry: string = '';
+    assetId: number = 0;
+    assetName: string = '';
+    assetType: string = '';
+    allocatedToId: number;
+    allocatedTo: string = '';
+    allocatedById: number;
+    allocatedBy: string = '';
+    serialNumber: number;
+    manufacturer: string = '';
+    model: string = '';
+    licenceNumber: string = '';
+    dateOfExpiry: Date;
 
 }

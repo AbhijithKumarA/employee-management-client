@@ -1,1 +1,90 @@
-<p>manage-asset works!</p>
+<form ngForm #f="ngForm" (submit)="onSubmit(f)">
+    <input type="hidden" name="assetId" value="service.assetFormData.assetId" />
+
+    <div class="mb-auto row">
+        <label class="col-auto col-form-label"><strong>Asset Name</strong></label>
+        <div class="col-auto">
+            <input ngModel name="assetName" #assetName="ngModel" [(ngModel)]="service.assetFormData.assetName"
+            id="assetName" type="text" class="form-control" required />
+        </div>
+        <label class="col-md-2 col-form-label" *ngIf="service.assetFormData.assetId==0">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Asset Type</strong></label>
+        <div class="col-md-2" *ngIf="service.assetFormData.assetId==0">
+            <select ngModel name="assetType" #assetType="ngModel" [(ngModel)]="service.assetFormData.assetType"
+                 id="assetType" class="form-control" required>
+                <option value="">--Select--</option>
+                <option>Hardware</option>
+                <option>Software</option>
+            </select>
+        </div>
+    </div> <br>
+
+    <div class="mb-auto row">
+        <label class="col-auto col-form-label"><strong>Allocated To</strong></label>
+        <div class="col-auto">
+            <input ngModel name="allocatedToId" #allocatedToId="ngModel" [(ngModel)]="service.assetFormData.allocatedToId"
+            id="allocatedToId" type="number" class="form-control" placeholder="Enter Employee Id" />
+
+            <!-- <select ngModel name="allocatedToId" #allocatedToId="ngModel" [(ngModel)]="service.assetFormData.allocatedToId"
+            id="allocatedToId" type="number" class="form-control" placeholder="Enter Employee Id">
+            <option >--Select--</option>
+            <option *ngFor="let e of employee.employeeList" [value]="e.employeeId">{{ e.firstName }}</option>
+            </select> -->
+
+        </div>
+        <label class="col-md-2 col-form-label">&nbsp;&nbsp;&nbsp;<strong>Allocated By</strong></label>
+        <div class="col-auto">
+            <input ngModel name="allocatedById" #allocatedById="ngModel" [(ngModel)]="service.assetFormData.allocatedById"
+            id="allocatedById" type="number" class="form-control" placeholder="Enter Employee Id" />
+
+            <!-- <select ngModel name="allocatedById" #allocatedById="ngModel" [(ngModel)]="service.assetFormData.allocatedById"
+            id="allocatedById" type="number" class="form-control" placeholder="Enter Employee Id" >
+            <option value="">--Select--</option>
+            <option *ngFor="let emp of employee.employeeList" [value]="emp.employeeId">{{ emp.firstName }}</option>
+            </select> -->
+
+        </div>
+    </div> <br>
+
+    <div class="mb-auto row">
+        <label class="col-auto col-form-label"><strong>Manufacturer</strong></label>
+        <div class="col-auto">
+            <input ngModel name="manufacturer" #manufacturer="ngModel" [(ngModel)]="service.assetFormData.manufacturer"
+            id="manufacturer" type="text" class="form-control" required />
+        </div>
+        <label class="col-md-2 col-form-label">&nbsp;<strong>Model</strong></label>
+        <div class="col-auto">
+            <input ngModel name="model" #model="ngModel" [(ngModel)]="service.assetFormData.model"
+            id="model" type="text" class="form-control" required />
+        </div>
+    </div> <br>
+
+    <div class="mb-auto row">
+        <label class="col-auto col-form-label"><strong>Serial Number</strong></label>
+        <div class="col-auto">
+            <input ngModel name="serialNumber" #serialNumber="ngModel" [(ngModel)]="service.assetFormData.serialNumber"
+            id="serialNumber" type="text" class="form-control" />
+        </div>
+        <label class="col-auto col-form-label"><strong>Licence Number</strong></label>
+        <div class="col-auto">
+            <input ngModel name="licenceNumber" #licenceNumber="ngModel" [(ngModel)]="service.assetFormData.licenceNumber"
+            id="licenceNumber" type="text" class="form-control" />
+        </div>
+    </div> <br>
+
+    <div class="mb-auto row">
+        <label class="col-auto col-form-label"><strong>Date of Expiry</strong></label>
+        <div class="col-auto">
+            <input ngModel name="dateOfExpiry" #dateOfExpiry="ngModel" [(ngModel)]="service.assetFormData.dateOfExpiry"
+            id="dateOfExpiry" type="datetime-local" class="form-control" />
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="text-right">
+        <button class="btn btn-secondary mr-3" data-bs-dismiss="modal" (click)="resetForm(f)">Cancel</button> &nbsp;
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid"  *ngIf="service.assetFormData.assetId==0">Add</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" *ngIf="service.assetFormData.assetId!=0">Update</button>
+    </div>
+
+</form>

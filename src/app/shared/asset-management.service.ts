@@ -19,11 +19,11 @@ export class AssetManagementService {
   }
 
   putAsset() {
-    return this.http.put(`${this.baseURL}/Asset/${this.assetFormData.AssetId}`, this.assetFormData);
+    return this.http.put(`${this.baseURL}/Asset/${this.assetFormData.assetId}`, this.assetFormData);
   }
 
   deleteAsset(id: number) {
-    return this.http.delete(`${this.baseURL}/Asset/${this.assetFormData.AssetId}`);
+    return this.http.delete(`${this.baseURL}/Asset/${id}`);
   }
 
   refreshAssetList() {
