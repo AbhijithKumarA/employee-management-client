@@ -1,85 +1,68 @@
 <app-homepage></app-homepage>
-<br>
+<br> <br>
 
 <div class="container">
 
     <div>
-        <h1 class="h1 mb-3 fw-normal"><strong>Your Info</strong></h1>
-    </div> <br>
-
-    <!-- <table class="table table-borderless" style="width: 100%;" *ngIf="userDetails">
-      <tbody>
-        <tr>
-          <td style="width: 50%"><strong>Employee Id: </strong> {{ userDetails.employeeId }} </td>
-        </tr> <br>
-        <tr>
-          <td style="width: 50%"><strong>First Name: </strong> {{ userDetails.firstName }} </td>
-          <td style="width: 50%"><strong>Last Name:  </strong> {{ userDetails.lastName }} </td>
-        </tr> <br>
-        <tr>
-          <td style="width: 50%"><strong>Date of Birth:  </strong> {{ userDetails.dateOfBirth | date:'dd-MM-YYYY' }} </td>
-          <td style="width: 50%"><strong>Gender: </strong> {{ userDetails.gender }} </td>
-        </tr> <br>
-        <tr>
-          <td><strong>Address:  </strong> {{ userDetails.address }} </td>
-        </tr> <br>
-        <tr>
-          <td style="width: 50%"><strong>Date of Joining:  </strong> {{ userDetails.dateOfJoining | date:'dd-MM-YYYY' }} </td>
-          <td style="width: 50%"><strong>Department: </strong> {{ userDetails.department }} </td>
-        </tr>
-      </tbody>
-    </table> -->
+        <h1 class="h1 mb-3 fw-normal" style="font-size: 40px;"><strong>Your Info</strong></h1>
+    </div> <br> 
     
-    <div *ngIf="userDetails">
-    <div class="row">
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Employee Id</strong></label>
-            <input type="text" [value]="userDetails.employeeId" class="form-control" placeholder="Employee Id" disabled readonly>
-          </div>
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Username</strong></label>
-            <input type="text" [value]="userDetails.userName" class="form-control" placeholder="Username" disabled readonly>
-          </div>
-    </div> <br>
+    <div class="details" *ngIf="userDetails">
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Employee Id:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.employeeId">
+        </div>
+      </div>
 
-    <div class="row">
-        <div class="col col-md-4">
-            <label class="form-label"><strong>First Name</strong></label>
-          <input type="text" [value]="userDetails.firstName" class="form-control" placeholder="First name" disabled readonly>
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Username:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.userName">
         </div>
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Last Name</strong></label>
-          <input type="text" [value]="userDetails.lastName" class="form-control" placeholder="Last name" disabled readonly>
-        </div>
-      </div> <br>
+      </div>
 
-    <div class="row">
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Date of Birth</strong></label>
-          <input type="datetime" [value]="userDetails.dateOfBirth | date:'dd-MM-YYYY'" class="form-control" placeholder="DOB" disabled readonly>
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Full Name:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.firstName+&quot; &quot;+userDetails.lastName">
         </div>
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Gender</strong></label>
-          <input type="text" [value]="userDetails.gender" class="form-control" placeholder="Gender" disabled readonly>
-        </div>
-      </div> <br>
+      </div>
 
-      <div class="row">
-        <div class="col col-md-6">
-            <label class="form-label"><strong>Address</strong></label>
-            <textarea type="text" rows="3" class="form-control" placeholder="Address" disabled readonly>{{ userDetails.address }}</textarea>
-          </div>
-    </div> <br>
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Date of Birth:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.dateOfBirth | date:'dd-MM-YYYY'">
+        </div>
+      </div>
+      
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Gender:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.gender">
+        </div>
+      </div>
 
-    <div class="row">
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Date of Joining</strong></label>
-          <input type="datetime" [value]="userDetails.dateOfJoining | date:'dd-MM-YYYY'" class="form-control" placeholder="DOJ" disabled readonly>
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Address:</strong></label>
+        <div class="col-sm-10">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.address">
         </div>
-        <div class="col col-md-4">
-            <label class="form-label"><strong>Department</strong></label>
-          <input type="text" [value]="userDetails.departmentName" class="form-control" placeholder="Department" disabled readonly>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Date of Joining:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.dateOfJoining| date:'dd-MM-YYYY'">
         </div>
-      </div> <br>
+      </div>
+      
+      <div class="mb-3 row">
+        <label class="col-auto col-form-label"><strong>Department:</strong></label>
+        <div class="col-auto">
+          <input type="text" readonly class="form-control-plaintext" [value]="userDetails.departmentName">
+        </div>
+      </div>
     </div>
+
 </div>

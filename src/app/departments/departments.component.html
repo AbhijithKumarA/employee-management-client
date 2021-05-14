@@ -13,9 +13,9 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="departmentModalLabel" *ngIf="service.departmentFormData.departmentId==0">Add Department</h4>
-            <h4 class="modal-title" id="departmentModalLabel" *ngIf="service.departmentFormData.departmentId!=0">Edit Department</h4>
-            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+            <h2 class="modal-title" id="departmentModalLabel" *ngIf="service.departmentFormData.departmentId==0"><strong>Add Department</strong></h2>
+            <h2 class="modal-title" id="departmentModalLabel" *ngIf="service.departmentFormData.departmentId!=0"><strong>Edit Department</strong></h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
             <app-manage-department></app-manage-department>
@@ -28,25 +28,24 @@
     <br />
     <table class="table table-hover non-click">
       <thead class="thead-light">
-        <tr class="text-center">
+        <tr class="align-middle">
           <th>Department ID</th>
           <th>Department Name</th>
           <th>In-charge</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="text-center" *ngFor="let dep of service.departmentList">
+        <tr class="align-middle" *ngFor="let dep of service.departmentList">
           <td>{{ dep.departmentId }}</td>
           <td>{{ dep.departmentName }}</td>
           <td>{{ dep.deptInChargeName }}</td>
           <td>
             <a class="btn edit" data-bs-toggle="modal" data-bs-target="#departmentModal" (click)="populate(dep)">
-            <i class="bi bi-pencil-square" style="color: rgb(0, 183, 255);"></i> Edit</a>
-            &nbsp;
+            <i class="bi bi-pencil-square" style="color: rgb(0, 183, 255);" data-bs-toggle="tooltip" title="Edit"></i></a>
+            
             <a class="btn delete" (click)="onDelete(dep.departmentId)">
-            <i class="bi bi-trash" style="color: red"></i>  Delete</a>
+            <i class="bi bi-trash" style="color: red" data-bs-toggle="tooltip" title="Delete"></i></a>
           </td>
         </tr>
       </tbody>

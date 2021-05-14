@@ -13,9 +13,9 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="employeeModalLabel" *ngIf="service.employeeFormData.employeeId==0">Add Employee</h4>
-              <h4 class="modal-title" id="employeeModalLabel" *ngIf="service.employeeFormData.employeeId!=0">Edit Employee</h4>
-              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+              <h2 class="modal-title" id="employeeModalLabel" *ngIf="service.employeeFormData.employeeId==0"><strong>Add Employee</strong></h2>
+              <h2 class="modal-title" id="employeeModalLabel" *ngIf="service.employeeFormData.employeeId!=0"><strong>Edit Employee</strong></h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
               <app-manage-employee></app-manage-employee>
@@ -25,9 +25,9 @@
       </div>
 
     <br />
-    <table class="table table-hover non-click">
+    <table id="employeeTbl" class="table table-hover non-click">
       <thead class="thead-light">
-        <tr class="text-center">
+        <tr class="trow align-middle">
           <th>Emp ID</th>
           <th>Name</th>
           <th>DOB</th>
@@ -39,19 +39,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let emp of service.employeeList">
-          <td class="text-center">{{ emp.employeeId }}</td>
+        <tr class="align-middle" *ngFor="let emp of service.employeeList">
+          <td>{{ emp.employeeId }}</td>
           <td>{{ emp.firstName }} {{ emp.lastName }}</td>
-          <td class="text-center">{{ emp.dateOfBirth | date:'dd-MM-YYYY' }}</td>
-          <td class="text-center">{{ emp.gender }}</td>
+          <td>{{ emp.dateOfBirth | date:'dd-MM-YYYY' }}</td>
+          <td>{{ emp.gender }}</td>
           <td>{{ emp.address }}</td>
           <td>{{ emp.departmentName }}</td>
-          <td class="text-center">{{ emp.dateOfJoining | date:'dd-MM-YYYY' }}</td>
+          <td>{{ emp.dateOfJoining | date:'dd-MM-YYYY' }}</td>
           <td>
             <a class="btn edit" data-bs-toggle="modal" data-bs-target="#employeeModal" (click)="populate(emp)">
-            <i class="bi bi-pencil-square" style="color: rgb(0, 183, 255);"></i>  Edit</a>
+            <i class="bi bi-pencil-square" style="color: rgb(0, 183, 255);" data-bs-toggle="tooltip" title="Edit"></i></a>
+            
             <a class="btn delete" (click)="onDelete(emp.employeeId)">
-            <i class="bi bi-trash" style="color: red"></i>  Delete</a>
+            <i class="bi bi-trash" style="color: red" data-bs-toggle="tooltip" title="Delete"></i></a>
           </td>
         </tr>
       </tbody>
