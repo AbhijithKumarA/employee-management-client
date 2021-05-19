@@ -10,9 +10,10 @@ import { NgForm } from '@angular/forms';
   templateUrl: './manage-asset.component.html',
   styleUrls: ['./manage-asset.component.css']
 })
+
 export class ManageAssetComponent implements OnInit {
 
-  constructor(public service: AssetManagementService, private toastr: ToastrService, public employee: EmployeeManagementService) { }
+  constructor(public service: AssetManagementService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +33,7 @@ export class ManageAssetComponent implements OnInit {
         this.service.refreshAssetList();
         this.toastr.success('Added successfully', 'New Asset')
       },
-      err => { console.log(err), console.log(f) }
+      err => { console.log(err) }
     );
   }
 

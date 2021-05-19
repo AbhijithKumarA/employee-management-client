@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
     "@npm/types": "^1.0.1",
+    "@popperjs/core": "^2.9.2",
+    "ngx-popover": "0.0.16",
     "ngx-toastr": "^13.2.1",
     "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
