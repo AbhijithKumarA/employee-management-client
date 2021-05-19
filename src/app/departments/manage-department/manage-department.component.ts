@@ -13,7 +13,10 @@ export class ManageDepartmentComponent implements OnInit {
 
   constructor(public service: EmployeeManagementService, private toastr: ToastrService) { }
 
+  
+
   ngOnInit(): void {
+    this.service.refreshEmployeeList();
   }
 
   onSubmit(form: NgForm) {

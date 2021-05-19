@@ -1,0 +1,33 @@
+<form ngForm #f="ngForm" (submit)="onSubmit(f)">
+    <input ngModel name="assetRequestId" #assetRequestId="ngModel" type="hidden" name="assetRequestId" [(ngModel)]="service.assetRequestFormData.assetRequestId" />
+    <input ngModel name="requestingEmployeeId" #requestingEmployeeId="ngModel" type="hidden" 
+    [(ngModel)]="service.assetRequestFormData.requestingEmployeeId" 
+    *ngIf="user.departmentName!='SFM' && user.departmentName!='Human Resources'" />
+
+    <div class="mb-auto row">
+        <label class="col-md-2 col-form-label"><strong>Asset</strong></label>
+        <div class="col-md-5">
+            <select ngModel name="assetId" #assetId="ngModel" [(ngModel)]="service.assetRequestFormData.assetId"
+            id="assetId" type="text" class="form-control" >
+            <option value="">--Select--</option>
+            <option *ngFor="let a of service.assetList" [ngValue]=a.assetId>Id:{{ a.assetId }} - {{ a.assetName }}</option>
+            </select>
+        </div>
+    </div> <br>
+
+    <div class="mb-auto row">
+        <label class="col-auto col-form-label"><strong>Number of Days</strong></label>
+        <div class="col-md-5">
+            <input ngModel name="numberOfDays" #numberOfDays="ngModel" [(ngModel)]="service.assetRequestFormData.numberOfDays"
+            id="numberOfDays" type="number" class="form-control" required />
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="text-right">
+        <button class="btn btn-secondary mr-3" data-bs-dismiss="modal" (click)="resetForm(f)">Cancel</button> &nbsp;
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" *ngIf="service.assetRequestFormData.assetRequestId==0">Create</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" data-bs-dismiss="modal" *ngIf="service.assetRequestFormData.assetRequestId!=0">Save Changes</button>
+    </div>
+</form>

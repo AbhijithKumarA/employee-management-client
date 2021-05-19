@@ -4,13 +4,13 @@
   <nav class="navbar navbar-expand-sm">
 
     <ul class="nav nav-tabs">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user.departmentName==='SFM' || user.departmentName==='Human Resources'">
         <a class="nav-link" routerLink="/employees" routerLinkActive="active"
           >Employees</a
         >
       </li> 
       &nbsp; &nbsp;
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user.departmentName==='SFM' || user.departmentName==='Human Resources'">
         <a class="nav-link" routerLink="/departments" routerLinkActive="active"
           >Departments</a
         >
@@ -37,7 +37,7 @@
 
     <ul class="navbar-nav ms-auto">
       <li class="nav-item" style="font-size: 25px;">
-        <strong>Hello {{ userDetails.userName }}!</strong>
+        <strong>Hello {{ user.userName }}!</strong>
       </li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <li class="nav-item">
         <button type="button" class="btn btn-outline-danger me-auto mb-2 mb-sm-0" (click)=onLogout()>Logout</button>

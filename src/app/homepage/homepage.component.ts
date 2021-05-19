@@ -10,20 +10,11 @@ import { Router, CanActivate } from '@angular/router';
 export class HomepageComponent implements OnInit {
 
   constructor(private router: Router, private service: UserService) { }
+  
+  saved = localStorage.getItem('user');
+  user = JSON.parse(this.saved || '');
 
-  // loggedIn: boolean = (localStorage.getItem('token') != null)
-
-  userDetails : any;
-
-  ngOnInit(): void { 
-    this.service.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  ngOnInit(): void {
   }
 
   onLogout() {
