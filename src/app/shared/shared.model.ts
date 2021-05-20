@@ -13,7 +13,7 @@ export class Department {
     departmentId: number = 0;
     departmentName: any;
     deptInChargeName: any;
-    employeeId : number;
+    employeeId : number = 0;
 }
 
 export class Asset {
