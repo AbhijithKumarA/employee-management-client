@@ -12,21 +12,11 @@
         <label for="inCharge">In-charge</label>
         <select ngModel name="inCharge" #inCharge="ngModel" [(ngModel)]="service.departmentFormData.employeeId"
             id="inCharge" type="text" class="form-control" >
-            <option value="">--Select--</option>
+            <option value=0>--Select--</option>
             <option *ngFor="let emp of service.employeeList" [value]=emp.employeeId>{{ emp.firstName }}  {{ emp.lastName }}</option>
-            </select>
-        <!-- <input ngModel name="inCharge" #inCharge="ngModel" [(ngModel)]="service.departmentFormData.deptInChargeName"
-         id="inCharge" type="text" class="form-control"/> -->
-        <!-- <div class="alert alert-danger" *ngIf="inCharge.touched && !inCharge.valid">In-charge cannot be empty!</div> -->
+        </select>
     </div> <br>
     
-    <!-- <div class="form-group">
-        <label for="inChargeEmployee">Employee Id</label>
-        <input ngModel name="inChargeEmployee" #inChargeEmployee="ngModel" [(ngModel)]="service.departmentFormData.employeeId"
-         id="inChargeEmployee" type="text" class="form-control"/>
-        <div class="alert alert-danger" *ngIf="inChargeEmployee.touched && !inChargeEmployee.valid">Please provide Employee Id of the In-charge!</div>
-    </div> -->
-
     <hr>
 
     <div class="text-right">

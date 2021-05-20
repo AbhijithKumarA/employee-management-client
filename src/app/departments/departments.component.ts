@@ -24,7 +24,13 @@ export class DepartmentsComponent implements OnInit {
           this.service.refreshDepartmentList();
           this.toastr.error('Deleted successfully', 'Department details');
         },
-        err => { console.log(err); }
+        err => { 
+          if(err.status == 400){
+            this.toastr.warning(err.error, 'Department not deleted');
+          }
+          else
+            console.log(err);
+        }
       );
     }
   }
