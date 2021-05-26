@@ -21,14 +21,29 @@ export class Asset {
     assetId: number = 0;
     assetName: string = '';
     assetType: string = '';
-    allocatedToId: number;
-    allocatedTo: string = '';
-    allocatedById: number;
-    allocatedBy: string = '';
+    allocatedToId: string;
+    allocatedTo: number;
+    allocatedById: string;
+    allocatedBy: number;
     serialNumber: number;
     manufacturer: string = '';
     model: string = '';
     licenceNumber: string = '';
     dateOfExpiry: Date;
 
+}
+
+export class AssetRequest {
+    assetRequestId: number = 0;
+    requestingEmployeeId: number;
+    employeeName: string;
+    assetId: number;
+    asset: string;
+    numberOfDays: number;
+    requestedOn: Date;
+    approvedOn: Date;
+    approvedById: number;
+    approvedBy: string;
+    approved: boolean;
+    reason: string;
 }

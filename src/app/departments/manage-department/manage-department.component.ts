@@ -13,7 +13,10 @@ export class ManageDepartmentComponent implements OnInit {
 
   constructor(public service: EmployeeManagementService, private toastr: ToastrService) { }
 
+  
+
   ngOnInit(): void {
+    this.service.refreshEmployeeList();
   }
 
   onSubmit(form: NgForm) {
@@ -31,7 +34,13 @@ export class ManageDepartmentComponent implements OnInit {
         this.service.refreshDepartmentList();
         this.toastr.success('Added successfully', 'New Department');
       },
-      err => { console.log(err); }
+      err => { 
+        if (err.status == 400) {
+          this.toastr.warning(err.error, 'New Department not created');
+        }
+        else
+          console.log(err);
+       }
     );
   }
 
@@ -42,7 +51,13 @@ export class ManageDepartmentComponent implements OnInit {
         this.service.refreshDepartmentList();
         this.toastr.success('Updated successfully', 'Department details');
       },
-      err => { console.log(err); }
+      err => { 
+        if(err.status == 400){
+          this.toastr.warning(err.error, 'Department not updated');
+        }
+        else
+          console.log(err);
+      }
     );
   }
 

@@ -1,0 +1,79 @@
+<form ngForm #f="ngForm">
+    <input type="hidden" name="approvedById" value="users.employeeId" *ngIf="user.departmentName=='SFM' && user.departmentName=='Human Resources'" />
+
+    <div>
+        <div class="mb-3 row">
+            <label class="col-md-3 col-form-label"><strong>Request Id:</strong></label>
+            <div class="col-auto">
+              <input type="number" readonly class="form-control-plaintext" [value]="service.assetRequestFormData.assetRequestId">
+            </div>
+        </div>
+
+        <input ngModel name="requestingEmployeeId" #requestingEmployeeId="ngModel" type="hidden" [(ngModel)]="service.assetRequestFormData.requestingEmployeeId" />
+        
+        <div class="mb-3 row">
+            <label class="col-auto col-form-label"><strong>Employee Name:</strong></label>
+            <div class="col-auto">
+              <input type="text" readonly class="form-control-plaintext" [value]="service.assetRequestFormData.employeeName">
+            </div>
+        </div>
+
+        <input ngModel name="assetId" #assetId="ngModel" type="hidden" [(ngModel)]="service.assetRequestFormData.assetId" />
+
+        <div class="mb-3 row">
+            <label class="col-md-3 col-form-label"><strong>Asset:</strong></label>
+            <div class="col-auto">
+              <input type="text" readonly class="form-control-plaintext" [value]="service.assetRequestFormData.asset">
+            </div>
+        </div>
+        
+        <div class="mb-3 row">
+            <label class="col-md-3 col-form-label"><strong>No. of Days:</strong></label>
+            <div class="col-auto">
+              <input type="text" readonly class="form-control-plaintext" [value]="service.assetRequestFormData.numberOfDays">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-auto col-form-label"><strong>Requested On:</strong></label>
+            <div class="col-auto">
+              <input type="datetime" readonly class="form-control-plaintext" [value]="service.assetRequestFormData.requestedOn | date:'dd-MM-YYYY'">
+            </div>
+        </div>  
+
+        <hr>
+        
+            <div class="col-auto text-center">
+                <button class="btn btn-secondary col-md-3" data-bs-dismiss="modal" (click)="resetForm(f)">
+                    Cancel
+                </button> &nbsp;
+                <button class="btn btn-danger col-md-3" data-bs-target="#reasonModal" data-bs-toggle="modal">
+                    Reject
+                </button> &nbsp;
+                <button class="btn btn-success col-md-3" data-bs-dismiss="modal" (click)="approve(f)">Approve</button>                
+            </div>
+
+        <div class="modal fade" id="reasonModal" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <h2 class="modal-title" id="reasonModalLabel"><strong>Reason for rejection</strong></h2>
+                  
+                   <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                  <textarea ngModel #reason="ngModel" class="form-control" name="reason" type="textarea" 
+                  rows="4" [(ngModel)]="service.assetRequestFormData.reason" required ></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger d-grid gap-2 mx-auto" data-bs-dismiss="modal" type="submit" [disabled]="!f.valid" (click)="reject(f)">
+                        Reject asset request
+                    </button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</form>

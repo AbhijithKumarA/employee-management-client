@@ -1,4 +1,7 @@
+import { ToastrService } from 'ngx-toastr';
+import { AssetManagementService } from './../shared/asset-management.service';
 import { Component, OnInit } from '@angular/core';
+import { AssetRequest } from '../shared/shared.model';
 
 @Component({
   selector: 'app-asset-requests',
@@ -7,26 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetRequestsComponent implements OnInit {
 
-  constructor() { }
+  saved = localStorage.getItem('user');
+  user = JSON.parse(this.saved || '');
+
+  constructor(public service: AssetManagementService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    //this.service.refreshAssetList();
+    if (this.user.departmentName==='SFM' || this.user.departmentName==='Human Resources') {
+      this.service.refreshAssetRequestList();
+    }
+    else
+      this.service.refreshEmployeeAssetRequestList(this.user.employeeId);    
   }
 
-//   populate(selected: Asset) {
-//     this.service.assetFormData = Object.assign({}, selected)
-//   }
+  populate(selected: AssetRequest) {
+    this.service.assetRequestFormData = Object.assign({}, selected)
+  }
 
-//   onDelete(id: number) {
-//     if(confirm('Are you sure you want to delete this Asset?'))
-//     {
-//       this.service.deleteAsset(id).subscribe(
-//         res => {
-//           this.service.refreshAssetList();
-//           this.toastr.error('Deleted successfully', 'Asset details');
-//         },
-//         err => { console.log(err); }
-//       );
-//     }
-//   }
+  onDelete(id: number) {
+    if(confirm('Are you sure you want to delete this asset request?'))
+    {
+      this.service.deleteAssetRequest(id).subscribe(
+        res => {
+          this.service.refreshEmployeeAssetRequestList(this.user.employeeId);
+          this.toastr.error('Deleted successfully', 'Asset request');
+        },
+        err => { console.log(err); }
+      );
+    }
+  }
 }

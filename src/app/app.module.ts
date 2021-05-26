@@ -1,5 +1,4 @@
 import { AuthInterceptor } from './shared/auth.interceptor';
-import { AuthGuard } from './shared/auth.guard';
 import { UserService } from './shared/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -22,6 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ManageAssetRequestsComponent } from './asset-requests/manage-asset-requests/manage-asset-requests.component';
+import { AdminReviewComponent } from './asset-requests/admin-review/admin-review.component';
+
 
 @NgModule({
   declarations: [
@@ -37,24 +39,15 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    ManageAssetRequestsComponent,
+    AdminReviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] },
-      { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard], data: {permittedRoles: ['Administrator']} },
-      { path: 'departments', component: DepartmentsComponent, canActivate: [AuthGuard], data: {permittedRoles: ['Administrator']} },
-      { path: 'asset-list', component: AssetListComponent, canActivate: [AuthGuard] },
-      { path: 'asset-requests', component: AssetRequestsComponent, canActivate: [AuthGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'forbidden', component: ForbiddenComponent }
-    ]),
+    RouterModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
