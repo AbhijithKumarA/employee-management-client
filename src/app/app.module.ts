@@ -23,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ManageAssetRequestsComponent } from './asset-requests/manage-asset-requests/manage-asset-requests.component';
 import { AdminReviewComponent } from './asset-requests/admin-review/admin-review.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DxDateBoxModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { AdminReviewComponent } from './asset-requests/admin-review/admin-review
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    ToastrModule.forRoot()
+    DxDateBoxModule,
+    ToastrModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [UserService, {
     provide: HTTP_INTERCEPTORS,

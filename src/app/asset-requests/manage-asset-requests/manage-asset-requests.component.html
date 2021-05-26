@@ -8,10 +8,11 @@
         <label class="col-md-2 col-form-label"><strong>Asset</strong></label>
         <div class="col-md-5">
             <select ngModel name="assetId" #assetId="ngModel" [(ngModel)]="service.assetRequestFormData.assetId"
-            id="assetId" type="text" class="form-control" >
+            id="assetId" type="text" class="form-control" required >
             <option value="">--Select--</option>
-            <option *ngFor="let a of service.assetList" [ngValue]=a.assetId>Id:{{ a.assetId }} - {{ a.assetName }}</option>
+            <option *ngFor="let a of service.assetList" [ngValue]=a.assetId>Id: {{ a.assetId }} - {{ a.manufacturer }} {{ a.assetName }}</option>
             </select>
+            <div class="alert alert-danger" *ngIf="assetId.touched && !assetId.valid">Select an asset!</div>
         </div>
     </div> <br>
 
@@ -20,6 +21,7 @@
         <div class="col-md-5">
             <input ngModel name="numberOfDays" #numberOfDays="ngModel" [(ngModel)]="service.assetRequestFormData.numberOfDays"
             id="numberOfDays" type="number" class="form-control" required />
+            <div class="alert alert-danger" *ngIf="numberOfDays.touched && !numberOfDays.valid">Number of days cannot be empty!</div>
         </div>
     </div>
 
