@@ -6,6 +6,7 @@
         <div class="col-auto">
             <input ngModel name="assetName" #assetName="ngModel" [(ngModel)]="service.assetFormData.assetName"
             id="assetName" type="text" class="form-control" required />
+            <div class="alert alert-danger" *ngIf="assetName.touched && !assetName.valid">Asset name cannot be empty!</div>
         </div>
         <label class="col-md-2 col-form-label" *ngIf="service.assetFormData.assetId==0">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Asset Type</strong></label>
         <div class="col-md-2" *ngIf="service.assetFormData.assetId==0">
@@ -15,6 +16,7 @@
                 <option>Hardware</option>
                 <option>Software</option>
             </select>
+            <div class="alert alert-danger" *ngIf="assetType.touched && !assetType.valid">Asset type cannot be empty!</div>
         </div>
     </div> <br>
 
@@ -23,11 +25,13 @@
         <div class="col-auto">
             <input ngModel name="manufacturer" #manufacturer="ngModel" [(ngModel)]="service.assetFormData.manufacturer"
             id="manufacturer" type="text" class="form-control" required />
+            <div class="alert alert-danger" *ngIf="manufacturer.touched && !manufacturer.valid">Manufacturer cannot be empty!</div>
         </div>
         <label class="col-md-2 col-form-label">&nbsp;<strong>Model</strong></label>
         <div class="col-auto">
             <input ngModel name="model" #model="ngModel" [(ngModel)]="service.assetFormData.model"
             id="model" type="text" class="form-control" required />
+            <div class="alert alert-danger" *ngIf="model.touched && !model.valid">Model cannot be empty!</div>
         </div>
     </div> <br>
 
@@ -47,8 +51,13 @@
     <div class="mb-auto row">
         <label class="col-auto col-form-label"><strong>Date of Expiry</strong></label>
         <div class="col-auto">
-            <input ngModel name="dateOfExpiry" #dateOfExpiry="ngModel" [(ngModel)]="service.assetFormData.dateOfExpiry"
-            id="dateOfExpiry" type="datetime-local" class="form-control" />
+            <dx-date-box id="dateOfExpiry" ngModel name="dateOfExpiry" #dateOfExpiry="ngModel"
+                    [(ngModel)]="service.assetFormData.dateOfExpiry"
+                    type="date" 
+                    displayFormat="dd/MM/yyyy">
+                </dx-date-box>
+            <!-- <input ngModel name="dateOfExpiry" #dateOfExpiry="ngModel" [(ngModel)]="service.assetFormData.dateOfExpiry"
+            id="dateOfExpiry" type="datetime" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }" autocomplete="off" /> -->
         </div>
     </div>
 
